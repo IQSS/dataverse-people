@@ -48,6 +48,9 @@ public class MessageResource {
                             case "dataverse.unc.edu":
                                 timezone = "America/New_York";
                                 break;
+                            case "dataverse.harvard.edu":
+                                timezone = "America/New_York";
+                                break;
                             case "dataverse.lib.virginia.edu":
                                 timezone = "America/New_York";
                                 break;
@@ -113,6 +116,9 @@ public class MessageResource {
                                 break;
                             case "edatos.consorciomadrono.es":
                                 timezone = "Europe/Madrid";
+                                break;
+                            case "data.cimmyt.org":
+                                timezone = "America/Mexico_City";
                                 break;
                             default:
                                 break;
