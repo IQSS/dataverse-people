@@ -7,6 +7,12 @@ npm install
 npm start
 ```
 
+To run tests:
+
+```
+npm test
+```
+
 To build the static site for deployment:
 
 ```
