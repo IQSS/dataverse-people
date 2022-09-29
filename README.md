@@ -1,5 +1,7 @@
 # dataverse-people
 
+Copy either config.js.dev or config.js.prod to config.js (to the root, next to index.html) and adjust the URL as necessary.
+
 Inspired by <http://www.adam-bien.com/roller/abien/entry/java_ee_and_docker_quickstart>
 
 /opt/payara/appserver/glassfish/bin/asadmin deploy /tmp/micro.war

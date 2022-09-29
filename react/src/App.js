@@ -17,8 +17,12 @@ const MyTable = ({ children }) => {
 
 // for useEffect see https://blog.logrocket.com/modern-api-data-fetching-methods-react/
  useEffect(() => {
-  // TODO: make the URL configurable
-  var url = "http://localhost:7080/micro/resources/message";
+  // Note that this URL is set from .env.local when you run `npm run build`
+  var url = process.env.REACT_APP_API_URL;
+  if (url === undefined) {
+      url = "http://localhost:8080/micro/resources/message";
+  }
+  console.log("Fetching from API URL: " + process.env.REACT_APP_API_URL);
   fetch(url)
     .then(response => response.text())
     .then(tsvdata => {
