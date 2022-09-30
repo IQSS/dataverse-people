@@ -92,9 +92,10 @@ customElements.define(
         //console.log(this.planets);
         var data = this.planets;
         var x = data.split("\n");
-          console.log("length: " + x.length);
+        console.log("length: " + x.length);
         var rows = [];
-        for (var i = 1; i < x.length; i++) { // i=1 to skip header row
+        // i=1 to skip header row
+        for (var i = 1; i < x.length; i++) {
           var y = x[i].split("\t");
           console.log("y: " + y);
           x[i] = y;
@@ -144,7 +145,9 @@ customElements.define(
 <td><img src="https://avatars.githubusercontent.com/${planet.github}?v=4" width=21></td>
 <td><a href="https://github.com/${planet.github}">${planet.github}</a></td>
 <td><a href="http://${planet.hostname}">${planet.hostname}</a></td>
-<td><a href="https://view.matrix.org/room/!AmypvmJtUjBesRrnLM:matrix.org/members/${planet.matrix}">${planet.matrix.split(':')[0]}</a></td>
+<td><a href="https://view.matrix.org/room/!AmypvmJtUjBesRrnLM:matrix.org/members/${planet.matrix}">${
+                    planet.matrix.split(":")[0]
+                  }</a></td>
 <td>${planet.tz}</td>
 </tr>
               `;
