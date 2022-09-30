@@ -5,10 +5,10 @@ import Table from "react-bootstrap/Table";
 
 import "./App.css";
 
-// not sure why rows can't be defined in MyTable
+// not sure why rows can't be defined in PeopleTable
 var rows = [];
 
-const MyTable = ({ children }) => {
+const PeopleTable = ({ children }) => {
   //const [show, toggleShow] = useState(true);
   // added
   const [data, setData] = useState(null);
@@ -16,6 +16,7 @@ const MyTable = ({ children }) => {
   //const [error, setError] = useState(null);
 
   // for useEffect see https://blog.logrocket.com/modern-api-data-fetching-methods-react/
+  // TODO: handle errors fetching data
   useEffect(() => {
     // Note that this URL is set from .env.local when you run `npm run build`
     var url = process.env.REACT_APP_API_URL;
@@ -26,7 +27,6 @@ const MyTable = ({ children }) => {
     fetch(url)
       .then((response) => response.text())
       .then((tsvdata) => {
-        //console.log(data);
         var x = tsvdata.split("\n");
         for (var i = 1; i < x.length; i++) {
           // i=1 to skip header row
@@ -96,18 +96,7 @@ const App = () => (
   <Container className="p-3">
     <Container className="p-5 mb-4 bg-light rounded-3">
       <h3>Dataversians 😁</h3>
-      {/*
-      <h1 className="header">Welcome To React-Bootstrap</h1>
-      */}
-      <MyTable></MyTable>
-      {/*
-      <ExampleToast>
-        We now have Toasts
-        <span role="img" aria-label="tada">
-          🎉
-        </span>
-      </ExampleToast>
-      */}
+      <PeopleTable></PeopleTable>
     </Container>
   </Container>
 );
