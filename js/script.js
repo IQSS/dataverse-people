@@ -38,9 +38,7 @@ customElements.define(
           this[name]();
         }
       });
-      await this.fetchPeople(
-        config.url
-      );
+      await this.fetchPeople(config.url);
     }
     disconnectedCallback() {}
     attributeChangedCallback(attrName, oldVal, newVal) {
@@ -77,41 +75,43 @@ customElements.define(
         }
 
         this.shadowRoot.innerHTML += `
-          <span>
-            <div class="p-3 container">
-            <div class="p-5 mb-4 bg-light rounded-3 container">
-            <h3><slot name="title"></slot></h3>
-            <div class="table-responsive">
-            <!-- line height 24px added to match React-Bootstrap -->
-            <table class="table" style="line-height: 24px;">
-              <tr align="left">
-                <th></th>
-                <th>GitHub</th>
-                <th>Installation</th>
-                <th>Matrix</th>
-                <th>Timezone</th>
-              </tr>
-              ${rows
-                .map((person) => {
-                  return `
-<tr>
-<td><img src="https://avatars.githubusercontent.com/${person.github}?v=4" width=21></td>
-<td><a href="https://github.com/${person.github}">${person.github}</a></td>
-<td><a href="http://${person.hostname}">${person.hostname}</a></td>
-<td><a href="https://view.matrix.org/room/!AmypvmJtUjBesRrnLM:matrix.org/members/${person.matrix}">${
-                    person.matrix.split(":")[0]
-                  }</a></td>
-<td>${person.tz}</td>
-</tr>
-              `;
-                })
-                .join("")}
-            </table>
-            </div>
-            </div>
-            </div>
-          </span>
-        `;
+<span>
+  <div class="p-3 container">
+    <div class="p-5 mb-4 bg-light rounded-3 container">
+      <h3><slot name="title"></slot></h3>
+      <div class="table-responsive">
+        <!-- line height 24px added to match React-Bootstrap -->
+        <table class="table" style="line-height: 24px">
+          <tr align="left">
+            <th></th>
+            <th>GitHub</th>
+            <th>Installation</th>
+            <th>Matrix</th>
+            <th>Timezone</th>
+          </tr>
+          ${rows
+            .map((person) => {
+              return `
+          <tr>
+            <td><img src="https://avatars.githubusercontent.com/${person.github}?v=4" width="21" /></td>
+            <td><a href="https://github.com/${person.github}">${person.github}</a></td>
+            <td><a href="http://${person.hostname}">${person.hostname}</a></td>
+            <td>
+              <a href="https://view.matrix.org/room/!AmypvmJtUjBesRrnLM:matrix.org/members/${person.matrix}"
+                >${person.matrix.split(":")[0]}</a
+              >
+            </td>
+            <td>${person.tz}</td>
+          </tr>
+          `;
+            })
+            .join("")}
+        </table>
+      </div>
+    </div>
+  </div>
+</span>
+`;
       }
     }
   }
