@@ -1,4 +1,4 @@
-package com.greptilian;
+package org.dataverse.people;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

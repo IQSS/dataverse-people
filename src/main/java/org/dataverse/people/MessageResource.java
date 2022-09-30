@@ -1,4 +1,4 @@
-package com.greptilian;
+package org.dataverse.people;
 
 import java.io.BufferedReader;
 import java.io.File;
