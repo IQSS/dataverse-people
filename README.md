@@ -1,23 +1,29 @@
 # dataverse-people
 
+## API paths
+
+```
+/api/v1/people/list
+```
+
 Copy either config.js.dev or config.js.prod to config.js (to the root, next to index.html) and adjust the URL as necessary.
 
 Inspired by <http://www.adam-bien.com/roller/abien/entry/java_ee_and_docker_quickstart>
 
-/opt/payara/appserver/glassfish/bin/asadmin deploy /tmp/micro.war
+/opt/payara/appserver/glassfish/bin/asadmin deploy /tmp/dataverse-people.war
 
 /opt/payara/appserver/glassfish/bin/asadmin login
 
-docker exec -it micro tail -F ../domains/domain1/logs/server.log
+docker exec -it dataverse-people tail -F ../domains/domain1/logs/server.log
 
-docker exec -it micro /opt/payara/appserver/glassfish/bin/asadmin deploy /tmp/micro.war
+docker exec -it dataverse-people /opt/payara/appserver/glassfish/bin/asadmin deploy /tmp/dataverse-people.war
 
-docker exec -it micro tail -F /opt/payara/appserver/glassfish/domains/domain1/logs/server.log
+docker exec -it dataverse-people tail -F /opt/payara/appserver/glassfish/domains/domain1/logs/server.log
 
-docker logs micro
+docker logs dataverse-people
 
 ---
 
-docker rm -f micro && mvn package && docker build -t airhacks/micro . && docker run -d -p 9080:8080 --name micro airhacks/micro
+docker rm -f dataverse-people && mvn package && docker build -t iqss/dataverse-people . && docker run -d -p 9080:8080 --name dataverse-people iqss/dataverse-people
 
-curl http://localhost:9080/micro/resources/message
+curl http://localhost:9080/dataverse-people/resources/message

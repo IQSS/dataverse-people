@@ -45,8 +45,6 @@ customElements.define(
       // https://docs.google.com/spreadsheets/d/1o9DD-MQ0WkrYaEFTD5rF_NtyL8aUISgURsAXSL7Budk/edit?usp=sharing
       await this.fetchPlanets(
         //"https://docs.google.com/spreadsheets/d/1o9DD-MQ0WkrYaEFTD5rF_NtyL8aUISgURsAXSL7Budk/export?gid=0&format=tsv"
-        //"http://localhost:9080/micro/resources/message"
-        //"http://localhost:7080/micro/resources/message"
         config.url
       );
     }

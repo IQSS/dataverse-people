@@ -20,7 +20,7 @@ const MyTable = ({ children }) => {
     // Note that this URL is set from .env.local when you run `npm run build`
     var url = process.env.REACT_APP_API_URL;
     if (url === undefined) {
-      url = "http://localhost:8080/micro/resources/message";
+      url = "http://localhost:8080/dataverse-people/api/v1/people/list";
     }
     console.log("Fetching from API URL: " + process.env.REACT_APP_API_URL);
     fetch(url)

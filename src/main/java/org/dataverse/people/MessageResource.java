@@ -13,9 +13,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path("message")
+@Path("people")
 public class MessageResource {
 
+    @Path("list")
     @GET
     public Response message() throws IOException {
         String out = null;

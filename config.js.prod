@@ -1,3 +1,3 @@
 var config = {};
-config.url = '/api/message';
+config.url = '/api/v1/people/list';
 module.exports = config;
