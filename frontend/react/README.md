@@ -1,3 +1,5 @@
+# React frontend for dataverse-people
+
 Using a Table from https://react-bootstrap.github.io/components/table/
 
 To run in dev:
@@ -14,7 +16,7 @@ To run tests:
 npm test
 ```
 
-To build the static site for deployment (adjust URL as needed):
+To build the static site for production deployment (adjust URL as needed):
 
 ```
 echo 'REACT_APP_API_URL="/api/message"' > .env.local

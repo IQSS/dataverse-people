@@ -1,3 +1,0 @@
--[x] deploy to people.dataverse.org
--[ ] add React
--[ ] add Angular
