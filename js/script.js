@@ -3,7 +3,10 @@ customElements.define(
   class extends HTMLElement {
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      let shadow = this.attachShadow({ mode: "open" });
+      // https://stackoverflow.com/questions/54253300/using-bootstrap-template-with-vanilla-web-components/54257126#54257126
+      shadow.innerHTML = `
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">`;
     }
     static get observedAttributes() {
       return ["loading", "planets"];
@@ -74,19 +77,9 @@ customElements.define(
     }
     render() {
       if (this.loading) {
-        this.shadowRoot.innerHTML = `Loading...`;
+        //this.shadowRoot.innerHTML = `Loading...`;
       } else {
-        this.shadowRoot.innerHTML = "";
-        this.shadowRoot.innerHTML += `
-	   <table border=1>
-	   <tr><td>foo </td> </tr>`;
-        for (i = 0; i < 5; i++) {
-          this.shadowRoot.innerHTML += `<tr><td>${i}</td></tr>`;
-        }
-        this.shadowRoot.innerHTML += `</table>`;
-        this.shadowRoot.innerHTML += "<hr>";
-        this.shadowRoot.innerHTML += "GitHub Timezone Chat Installation<br>";
-        this.shadowRoot.innerHTML += "<hr>";
+        //this.shadowRoot.innerHTML = "";
         //console.log(this.planets);
         var data = this.planets;
         var x = data.split("\n");
@@ -121,14 +114,19 @@ customElements.define(
           rows.push(aRow);
         }
 
-        this.shadowRoot.innerHTML = `
+        this.shadowRoot.innerHTML += `
           <span>
-            <h3><slot name="title">Star Wars Planets</slot></h3>
 	 <!--
             ${this.renderPrevious()}
             ${this.renderNext()}
 	 -->
-            <table>
+
+            <div class="p-3 container">
+            <div class="p-5 mb-4 bg-light rounded-3 container">
+            <h3><slot name="title">Star Wars Planets</slot></h3>
+            <div class="table-responsive">
+            <!-- line height 24px added to match React-Bootstrap -->
+            <table class="table" style="line-height: 24px;">
               <tr align="left">
                 <th></th>
                 <th>GitHub</th>
@@ -152,6 +150,9 @@ customElements.define(
                 })
                 .join("")}
             </table>
+            </div>
+            </div>
+            </div>
           </span>
         `;
       }
