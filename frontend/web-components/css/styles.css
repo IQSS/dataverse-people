@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+}
+
+#people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
