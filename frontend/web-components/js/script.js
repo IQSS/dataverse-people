@@ -22,6 +22,7 @@ async function populate_cards() {
         githubUsername = y[0];
         //date = y[0];
         speaker = y[0];
+        tz = y[1];
         //title = y[2];
         matrix = y[2];
         //host = y[3];
@@ -66,6 +67,11 @@ async function populate_cards() {
           // strip leading @ and host (just show username)
           videoInstance.querySelector('.matrix-username').innerHTML = matrix.split(":")[0].substring(1);
           //videoInstance.querySelector('.matrix-username').innerHTML = matrix;
+        }
+        if (tz === '') {
+          videoInstance.querySelector('.tz').innerHTML = '';
+        } else {
+          videoInstance.querySelector('.tz-text').innerHTML = tz;
         }
         if (pinst === '') {
           videoInstance.querySelector('.pinst').innerHTML = '';
