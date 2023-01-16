@@ -28,6 +28,8 @@ async function populate_cards() {
         var yimg = 'https://github.com/' + githubUsername + '.png';
         videoInstance.querySelector('.imagesrc').setAttribute('src', yimg);
         var ghUrl = 'https://github.com/' + githubUsername;
+        videoInstance.querySelector('.avatar-href').setAttribute('href', ghUrl);
+        videoInstance.querySelector('.avatar-href').setAttribute('target', '_blank');
         videoInstance.querySelector('.github-href').setAttribute('href', ghUrl);
         videoInstance.querySelector('.github-href').setAttribute('target', '_blank');
         if (matrix === '') {
