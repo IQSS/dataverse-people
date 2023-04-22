@@ -25,6 +25,14 @@ docker run -d -p 9080:8080 --name dataverse-people iqss/dataverse-people
 curl http://localhost:9080/dataverse-people/api/v1/people/list
 ```
 
+When troubleshooting deployment:
+
+```
+docker kill dataverse-people
+docker rm dataverse-people
+docker run -it --rm -p 9080:8080 --name dataverse-people iqss/dataverse-people
+```
+
 ## Acknowledgements
 
 Inspired by <http://www.adam-bien.com/roller/abien/entry/java_ee_and_docker_quickstart>
