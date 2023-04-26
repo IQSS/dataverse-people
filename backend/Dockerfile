@@ -1,2 +1,2 @@
 FROM gdcc/base:unstable
-COPY ./target/dataverse-people ${DEPLOY_DIR}/dataverse-people
+COPY ./target/dataverse-people.war ${DEPLOY_DIR}
