@@ -1,0 +1,34 @@
+version: "2.4"
+
+services:
+
+  dev_dataverse-people:
+    container_name: "dev_dataverse-people"
+    hostname: dataverse
+    image: ${APP_IMAGE}
+    restart: on-failure
+    user: payara
+    environment:
+      - DATAVERSE_DB_HOST=postgres
+      - DATAVERSE_DB_PASSWORD=secret
+      - DATAVERSE_DB_USER=${DATAVERSE_DB_USER}
+    ports:
+      - "8080:8080" # HTTP (Dataverse Application)
+      - "4848:4848" # HTTP (Payara Admin Console)
+      - "9009:9009" # JDWP
+      - "8686:8686" # JMX
+    networks:
+      - dataverse
+    volumes:
+      - ./docker-dev-volumes/app/data:/dv
+      - ./docker-dev-volumes/app/secrets:/secrets
+    tmpfs:
+      - /dumps:mode=770,size=2052M,uid=1000,gid=1000
+      - /tmp:mode=770,size=2052M,uid=1000,gid=1000
+    mem_limit: 2147483648 # 2 GiB
+    mem_reservation: 1024m
+    privileged: false
+
+networks:
+  dataverse:
+    driver: bridge

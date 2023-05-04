@@ -18,6 +18,15 @@ curl http://localhost:8080/dataverse-people/api/v1/people/list
 
 ## Running in Docker
 
+Using Maven:
+
+```
+mvn -Pct clean package docker:build docker:run
+curl http://localhost:8080/dataverse-people/api/v1/people/list
+```
+
+Using Docker commands:
+
 ```
 mvn package
 docker build -t iqss/dataverse-people .
