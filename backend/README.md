@@ -33,10 +33,16 @@ docker rm dataverse-people
 docker run -it --rm -p 9080:8080 --name dataverse-people iqss/dataverse-people
 ```
 
-Reformatting code:
+## Reformatting code
 
 ```
 mvn spotless:apply
+```
+
+Alternatively, you can just run a check:
+
+```
+mvn spotless:check
 ```
 
 ## Acknowledgements
