@@ -9,6 +9,7 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
@@ -20,23 +21,27 @@ public class MessageResource {
     @GET
     public Response message() throws IOException {
         String out = null;
-        java.nio.file.Path pathToDataFile = Paths.get(File.separator + "tmp" + File.separator + "data.tsv");
+        java.nio.file.Path pathToDataFile =
+                Paths.get(File.separator + "tmp" + File.separator + "data.tsv");
         if (false && Files.exists(pathToDataFile)) {
             System.out.println("file exists, read it");
             out = new String(Files.readAllBytes(pathToDataFile));
         } else {
             System.out.println("no data file, fetch from remote");
-            String url = "https://docs.google.com/spreadsheets/d/1o9DD-MQ0WkrYaEFTD5rF_NtyL8aUISgURsAXSL7Budk/export?gid=0&format=tsv";
+            String url =
+                    "https://docs.google.com/spreadsheets/d/1o9DD-MQ0WkrYaEFTD5rF_NtyL8aUISgURsAXSL7Budk/export?gid=0&format=tsv";
             URL website = new URL(url);
             URLConnection connection = website.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String inputLine;
             String newLine = ""; // avoid adding newline at end.
             while ((inputLine = in.readLine()) != null) {
                 response.append(newLine);
                 String[] columns = inputLine.split("\t");
-                System.out.println("num columns: " + columns.length + " " + Arrays.toString(columns));
+                System.out.println(
+                        "num columns: " + columns.length + " " + Arrays.toString(columns));
                 String timezone = "";
                 if (columns.length > 3) {
                     System.out.println(columns[0] + " installation:" + columns[3]);
@@ -134,14 +139,13 @@ public class MessageResource {
             out = response.toString();
             Files.write(pathToDataFile, out.getBytes());
         }
-        return Response
-                .status(200)
+        return Response.status(200)
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Credentials", "true")
-                .header("Access-Control-Allow-Headers",
+                .header(
+                        "Access-Control-Allow-Headers",
                         "origin, content-type, accept, authorization")
-                .header("Access-Control-Allow-Methods",
-                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
                 .entity(out)
                 .build();
     }
