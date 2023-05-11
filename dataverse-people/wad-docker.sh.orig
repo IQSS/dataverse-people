@@ -1,0 +1,12 @@
+#!/bin/bash
+
+docker build -t test-project:1 .
+docker stop test-project || true
+
+docker run -d --rm \
+  --name test-project \
+  -p 9080:9080 \
+  -v /tmp/wad-dropins/:/opt/wlp/usr/servers/defaultServer/dropins/ \
+  test-project:1
+
+java -jar <path-to-wad>/wad.jar /tmp/wad-dropins/

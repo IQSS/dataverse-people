@@ -1,0 +1,17 @@
+#!/bin/bash
+# From https://www.youtube.com/watch?v=V_haSihHHV8
+# and https://blog.sebastian-daschner.com/entries/reloading-javaee-apps-wad
+#
+# Download wad.jar from https://wad.sh or https://github.com/AdamBien/wad/releases/latest
+WAD_PATH=/tmp
+
+docker build -f Dockerfile.openliberty -t dataverse-people:1 .
+docker stop dataverse-people || true
+
+docker run -d --rm \
+  --name dataverse-people \
+  -p 9080:9080 \
+  -v /tmp/wad-dropins/:/opt/wlp/usr/servers/defaultServer/dropins/ \
+  dataverse-people:1
+
+java -jar -Dmaven.home=/Users/pdurbin/github/tools/java/apache-maven-3.9.0 $WAD_PATH/wad.jar /tmp/wad-dropins/

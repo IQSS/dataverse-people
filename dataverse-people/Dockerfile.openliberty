@@ -1,0 +1,2 @@
+FROM open-liberty:full-java11-openj9
+COPY ./target/dataverse-people.war ${DEPLOYMENT_DIR}
