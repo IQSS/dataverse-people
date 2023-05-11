@@ -4,7 +4,7 @@
 #
 # Download wad.jar from https://wad.sh or https://github.com/AdamBien/wad/releases/latest
 WAD_PATH=/tmp
-DEPLOY_DIR=/opt/payara/deployments
+DEPLOY_DIR=/opt/payara/appserver/glassfish/domains/domain1/autodeploy
 
 docker build -f Dockerfile -t dataverse-people:1 .
 docker stop dataverse-people || true
@@ -19,4 +19,4 @@ docker run -d --rm \
   dataverse-people:1
 #  -v /tmp/wad-dropins/:/opt/wlp/usr/servers/defaultServer/dropins/ \
 
-java -jar -Dmaven.home=/Users/pdurbin/github/tools/java/apache-maven-3.9.0 ${WAD_PATH}/wad.jar /tmp/wad-dropins/
+java -jar -Dmaven.home=/Users/pdurbin/tools/maven/3.6.3/apache-maven-3.6.3 ${WAD_PATH}/wad.jar /tmp/wad-dropins/
