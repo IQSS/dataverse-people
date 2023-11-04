@@ -1,5 +1,9 @@
 package org.dataverse.people;
 
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Response;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -9,10 +13,6 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
 
 @Path("people")
 public class MessageResource {

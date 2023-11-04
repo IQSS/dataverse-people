@@ -5,7 +5,7 @@ The backend is written in Jakarta EE.
 ## Running with Payara Server
 
 ```
-/usr/local/payara5/bin/asadmin deploy dataverse-people.war
+/usr/local/payara6/bin/asadmin deploy dataverse-people.war
 ```
 
 ## Running with Payara Micro
