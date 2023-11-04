@@ -12,7 +12,7 @@ The backend is written in Jakarta EE.
 
 ```
 mvn package
-java -jar /tmp/payara-micro-*.jar target/dataverse-people.war
+java -Djava.net.preferIPv4Stack=true -jar /tmp/payara-micro-*.jar target/dataverse-people.war
 curl http://localhost:8080/dataverse-people/api/v1/people/list
 ```
 
