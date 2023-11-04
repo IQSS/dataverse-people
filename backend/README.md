@@ -22,7 +22,7 @@ curl http://localhost:8080/dataverse-people/api/v1/people/list
 ```
 mvn package
 docker build -t iqss/dataverse-people .
-docker run -d -p 9080:8080 --name dataverse-people iqss/dataverse-people
+docker run -d -p 9080:8080 -p 4848:4848 --name dataverse-people iqss/dataverse-people
 curl http://localhost:9080/dataverse-people/api/v1/people/list
 ```
 
