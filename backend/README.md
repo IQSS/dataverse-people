@@ -104,6 +104,19 @@ Alternatively, you can just run a check:
 mvn spotless:check
 ```
 
+## Running unit tests
+
+```
+mvn test
+```
+
+## Running unit tests and generating code coverage report
+
+```
+mvn test jacoco:report
+open target/site/jacoco/index.html
+```
+
 ## Acknowledgements
 
 Inspired by <http://www.adam-bien.com/roller/abien/entry/java_ee_and_docker_quickstart>
